@@ -25,13 +25,22 @@ void draw() {
   oldMouseY = mouseY;
   for (int i = 0; i < bob.length; i++ ) {
     bob[i].show();
-  if(mouseX > xCoor[i]){
-    bob[i].move();
-  }
+    if(mouseX > xCoor[i])
+      bob[i].moveXRight();
+      
+    else if(mouseY > yCoor[i])
+      bob[i].moveYDown();
+    else if(mouseX < xCoor[i])
+      bob[i].moveXLeft();
+    
+    else if(mouseY < yCoor[i])
+      bob[i].moveYUp();
+    
 
+  
   }
+}
 
-}  
 
 void mouseMoved() {
 
@@ -51,9 +60,17 @@ class Zombies {
     //myColor = color((int)(Math.random()*255),(int)(Math.random()*255),(int)(Math.random()*255));
     mySize = (int)(Math.random()*18)+12;
   }
-  void move(){
-  myX =
-  myY =
+  void moveXRight(){
+  myX += (int)(Math.random()*7)-1;
+  }
+  void moveXLeft(){
+  myX -= (int)(Math.random()*7)-1;
+  }
+  void moveYDown(){
+  myY += (int)(Math.random()*7)-1;
+  }
+  void moveYUp(){
+  myY -= (int)(Math.random()*7)-1;
   }
   void show() {
     //noStroke();
