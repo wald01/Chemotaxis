@@ -1,12 +1,12 @@
 Zombies [] bob;
 Human a;
 
-float oldMouseX;
-float oldMouseY;
+int oldMouseX;
+int oldMouseY;
 //float [] oldCoorX;
 //float [] oldCoorY;
 //float [] oldSize;
-int[] xCoor, yCoor, size;
+int[] xCoor, yCoor, sizes;
 void setup()   
 { 
   size(400, 400);
@@ -14,16 +14,16 @@ void setup()
   bob = new Zombies[10];
   xCoor = new int[bob.length];
   yCoor = new int[bob.length];
-  size = new int[bob.length];
+  sizes = new int[bob.length];
   //oldCoorX = new float[bob.length];
   //oldCoorY = new float[bob.length];
   for (int i = 0; i< bob.length; i++) {
     xCoor[i] = (int)(Math.random()*290)+i*5;
     yCoor[i] = (int)(Math.random()*290)+i*5;
-    size[i] = (int)(Math.random()*18)+12;
+    sizes[i] = (int)(Math.random()*18)+12;
     //oldCoorX[i] = xCoor[i];
     //oldCoorY[i] = yCoor[i];
-    bob[i] = new Zombies(xCoor[i], yCoor[i], size[i]);
+    bob[i] = new Zombies(xCoor[i], yCoor[i], sizes[i]);
   }
   a = new Human();
   a.show();
@@ -87,7 +87,7 @@ class Zombies {
     fill(myColor);
     ellipse(myX, myY, mySize, mySize);
   }
-  void clear(float xCoor, float yCoor, float size) { //used this to clear the trail but its not needed anymore
+  void clear(int xCoor, int yCoor, int size) { //used this to clear the trail but its not needed anymore
     fill(210);
     ellipse(xCoor+myX, yCoor+myY, size, size);
   }
@@ -107,7 +107,7 @@ class Human {
     ellipse(mouseX, mouseY, 20, 20);
     fill(210);
   }
-  void clear(float oldMouseX, float oldMouseY) { // used this to clear the trail but not needed anymore
+  void clear(int oldMouseX, int oldMouseY) { // used this to clear the trail but not needed anymore
     stroke(210);
 
     fill(210);
